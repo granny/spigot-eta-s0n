@@ -1,6 +1,6 @@
 let proxyUrl = 'https://cors-anywhere0.herokuapp.com/',
     targetUrl = 'https://hub.spigotmc.org/jenkins/view/RSS/job/Bukkit-RSS/api/json',
-    nextBuild = 723
+    nextBuild = 851
     $jebait = $('#jebait'),
     jebaitBool = true;
 
@@ -19,7 +19,7 @@ function checkNextBuild(buildNum) {
         let bool = data.nextBuildNumber == buildNum;
 
         setTime();
-        console.log((new Date()).getTime() + ' - is bukkit 1.16 here yet: ' + (bool?false:true));
+        console.log((new Date()).getTime() + ' - is bukkit 1.17 here yet: ' + (bool?false:true));
 
         if (bool) {
             return;
