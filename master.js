@@ -16,10 +16,10 @@ setInterval( () => {
 
 function checkNextBuild(buildNum) {
     $.getJSON(proxyUrl + targetUrl, (data) => {
-        let bool = data.nextBuildNumber == buildNum;
+        const bool = data.nextBuildNumber == buildNum;
 
         setTime();
-        console.log((new Date()).getTime() + ' - is bukkit 1.17 here yet: ' + (bool?false:true));
+        console.log((new Date()).getTime() + ' - is bukkit 1.17 here yet: ' + !bool);
 
         if (bool) {
             return;
@@ -41,11 +41,11 @@ function checkNextBuild(buildNum) {
 }
 
 function checkAusTime() {
-    let time = new Date().toLocaleString('en-US', {timeZone: 'Australia/Sydney'})
+    const time = new Date().toLocaleString('en-US', {timeZone: 'Australia/Sydney'})
     $('#timeAus').text(time.replace(/^.+,/g, ' '));
 }
 
 function setTime() {
-    let time = new Date().toLocaleString('en-US', {timeZone: 'Australia/Sydney'})
+    const time = new Date().toLocaleString('en-US', {timeZone: 'Australia/Sydney'})
     $('#time').text(time.replace(/^.+,/g, ' '));
 }
