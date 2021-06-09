@@ -11,7 +11,9 @@ setInterval( () => {
     checkAusTime();
 }, 1000);
 setInterval( () => {
-    checkNextBuild(nextBuild);
+    if (jebaitBool) {
+        checkNextBuild(nextBuild);
+    }
 }, 5000);
 
 function checkNextBuild(buildNum) {
@@ -29,7 +31,15 @@ function checkNextBuild(buildNum) {
         
         $('#audio-jebait')[0].play();
         if (jebaitBool) {
-            $jebait.append($('<button>').text('Pause Audio').click(()=>$('#audio-jebait')[0].pause()));
+            $jebait.append($('<button id="audio">').text(($('#audio-jebait')[0].paused ? 'Play' : 'Pause') + ' Audio').click(btn => {
+                if ($('#audio-jebait')[0].paused) {
+                    $('#audio-jebait')[0].play();
+                    $('#audio').text('Pause Audio');
+                } else {
+                    $('#audio').text('Play Audio');
+                    $('#audio-jebait')[0].pause();
+                }
+            }));
             $jebait.append('<br>')
             for (let i = 0; i < 45; i++) {
               $jebait.append($('<img>').attr('src','https://cdn.betterttv.net/emote/5b1740221c5a6065a7bad4b5/3x'));
