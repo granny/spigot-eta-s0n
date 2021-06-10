@@ -6,7 +6,11 @@ let proxyUrl = 'https://cors-anywhere0.herokuapp.com/',
     jebaitBool = true;
 
 $notifBtn.click(askNotificationPermission);
-handlePermission();
+if (!('Notification' in window)) {
+    console.log("This browser does not support notifications.");
+  } else {
+      handlePermission();
+  }
 
 checkNextBuild(nextBuild);
 setTime();
